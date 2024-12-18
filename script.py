@@ -25,7 +25,7 @@ if not BOT_TOKEN or not CHAT_ID or not SPREADSHEET_URL:
 bot = Bot(token=BOT_TOKEN)
 
 # Notification thresholds (in days)
-NOTIFY_DAYS = [60, 45, 30, 15, 7, 6, 5, 4, 3, 2, 1, 0]
+NOTIFY_DAYS = [60, 45, 30, 15, 7, 3, 1]
 
 
 async def send_notification(subscription, days_left):
