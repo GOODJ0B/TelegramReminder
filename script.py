@@ -2,7 +2,7 @@ import os
 from dotenv import load_dotenv
 import gspread
 from datetime import datetime, timedelta
-from telegram.bot import Bot
+from telegram import Bot
 import logging
 import asyncio
 import traceback
