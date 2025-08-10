@@ -91,6 +91,9 @@ async def check_subscriptions():
     await send_error_notification(error_message)
 
 
+async def main():
+    await check_subscriptions()
+    await send_ip()
+
 if __name__ == "__main__":
-  asyncio.run(check_subscriptions())
-  asyncio.run(send_ip())
+    asyncio.run(main())
