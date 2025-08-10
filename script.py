@@ -6,6 +6,7 @@ from telegram import Bot
 import logging
 import asyncio
 import traceback
+import urllib.request
 
 # Load environment variables from .env file
 load_dotenv()
@@ -27,6 +28,11 @@ bot = Bot(token=BOT_TOKEN)
 # Notification thresholds (in days)
 NOTIFY_DAYS = [60, 45, 30, 15, 7, 3, 1]
 
+with urllib.request.urlopen("https://api.ipify.org") as response:
+    ip = response.read().decode("utf-8")
+
+print("Mijn externe IP:", ip)
+await bot.send_message(chat_id=CHAT_ID, text=ip, parse_mode="Markdown")
 
 async def send_notification(subscription, days_left):
   """Send a subscription notification via Telegram bot."""
