@@ -29,10 +29,16 @@ bot = Bot(token=BOT_TOKEN)
 NOTIFY_DAYS = [60, 45, 30, 15, 7, 3, 1]
 
 async def send_ip():
+  try:
     with urllib.request.urlopen("https://api.ipify.org") as response:
         ip = response.read().decode("utf-8")
     print("Mijn externe IP:", ip)
     await bot.send_message(chat_id=CHAT_ID, text=ip, parse_mode="Markdown")
+  except Exception as e:
+    # Capture and send error details
+    error_message = traceback.format_exc()
+    await send_error_notification(error_message)
+
 
 async def send_notification(subscription, days_left):
   """Send a subscription notification via Telegram bot."""
@@ -92,8 +98,8 @@ async def check_subscriptions():
 
 
 async def main():
-    await check_subscriptions()
-    await send_ip()
+  await check_subscriptions()
+  await send_ip()
 
 if __name__ == "__main__":
-    asyncio.run(main())
+  asyncio.run(main())
