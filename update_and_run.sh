@@ -5,6 +5,7 @@ cd /home/pi/TelegramReminder
 
 # Perform a git pull to update the repository
 git pull origin main
+pip install -r requirements.txt
 
 # Run the Python script
 /usr/bin/python3 script.py
