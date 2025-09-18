@@ -26,7 +26,7 @@ if not BOT_TOKEN or not CHAT_ID or not SPREADSHEET_URL:
 bot = Bot(token=BOT_TOKEN)
 
 # Notification thresholds (in days)
-NOTIFY_DAYS = [60, 45, 30, 15, 7, 3, 1]
+NOTIFY_DAYS = [60, 45, 30, 15, 7, 3, 2, 1]
 
 
 async def send_notification(subscription, days_left):
@@ -107,7 +107,6 @@ async def check_subscriptions():
     data = fetch_spreadsheet_data()
     today = datetime.today()
 
-    logging.info(data)
     for subscription in data:
       try:
         # Parse the subscription end date
