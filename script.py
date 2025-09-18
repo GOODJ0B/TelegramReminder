@@ -107,6 +107,7 @@ async def check_subscriptions():
     data = fetch_spreadsheet_data()
     today = datetime.today()
 
+    logging.info(data)
     for subscription in data:
       try:
         # Parse the subscription end date
