@@ -103,6 +103,7 @@ def fetch_spreadsheet_data():
 async def check_subscriptions():
   """Check subscriptions and send notifications."""
   try:
+    logging.info("Start checking subscriptions!")
     data = fetch_spreadsheet_data()
     today = datetime.today()
 
